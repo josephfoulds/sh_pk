@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favorites: [],
+      favorites: JSON.parse(localStorage.getItem('favorites') || ("[]")),
       pokemon: null,
     };
 
@@ -24,6 +24,7 @@ class App extends Component {
   }
 
   addFavorite(pokemon) {
+    localStorage.setItem('favorites', JSON.stringify(this.state.favorites.concat([pokemon])));
     this.setState(prevState => ({
       favorites: [...prevState.favorites, pokemon]
     }))
