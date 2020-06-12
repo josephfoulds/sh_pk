@@ -3,6 +3,7 @@ import { render } from "react-dom";
 
 class Favorites extends Component {
   render() {
+    // Don't render if we have no favorites
     if (this.props.favorites.length <= 0) {
       return null
     }
