@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 
+import Search from "./Search"
+import Pokedex from "./Pokedex"
+import Favorites from "./Favorites"
+
 class App extends Component {
   render() {
     return (
-        <h1>Hello, world!</h1>
+      <div>
+        <Search />
+        <Pokedex />
+        <Favorites />
+      </div>
     );
   }
 }
