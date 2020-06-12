@@ -2,6 +2,19 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 
 class Pokedex extends Component {
+  constructor(props) {
+    super(props);
+
+    this.addFavorite = this.addFavorite.bind(this);
+  }
+
+  addFavorite() {
+    this.props.addFavorite({
+      name: this.props.pokemon["name"],
+      description: this.props.pokemon["description"],
+    })
+  }
+
   render() {
     if (!this.props.pokemon) {
       return null
@@ -18,6 +31,9 @@ class Pokedex extends Component {
         <span>
           {this.props.pokemon["description"]}
         </span>
+        <button className="button" onClick={this.addFavorite}>
+          Add to Favorites
+        </button>
       </div>
     );
   }

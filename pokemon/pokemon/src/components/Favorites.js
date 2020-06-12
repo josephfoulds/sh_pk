@@ -3,18 +3,24 @@ import { render } from "react-dom";
 
 class Favorites extends Component {
   render() {
-    if (!this.props.favorites) {
+    if (this.props.favorites.length <= 0) {
       return null
     }
-    
+
     return (
       <div className="favorites" style={{backgroundColor: "#ffc4cb"}}>
         <h1>
-          {this.props.favorites}
+          Favorites
         </h1>
         <ul>
-          <li>Pokemon A</li>
-          <li>Pokemon B</li>
+          {(this.props.favorites || []).map(item => (
+            <li key={item}>
+              <div>
+                {item.name}<br />
+                {item.description}
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     );
