@@ -3,14 +3,20 @@ import { render } from "react-dom";
 
 class Pokedex extends Component {
   render() {
+    if (!this.props.pokemon) {
+      return null
+    }
+
     return (
       <div className="pokedex" style={{backgroundColor: "#c7dcff"}}>
-        <h1>Pokedex</h1>
+        <h1>
+          Pokedex
+        </h1>
         <h2>
-          Pokemon Name
+          {this.props.pokemon["name"]}
         </h2>
         <span>
-          Pokemon Description
+          {this.props.pokemon["description"]}
         </span>
       </div>
     );

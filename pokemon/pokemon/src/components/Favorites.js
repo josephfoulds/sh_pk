@@ -3,10 +3,14 @@ import { render } from "react-dom";
 
 class Favorites extends Component {
   render() {
+    if (!this.props.favorites) {
+      return null
+    }
+    
     return (
       <div className="favorites" style={{backgroundColor: "#ffc4cb"}}>
         <h1>
-          Favorites
+          {this.props.favorites}
         </h1>
         <ul>
           <li>Pokemon A</li>
