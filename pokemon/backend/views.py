@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from backend.api.pokeapi.api import get_species
 from backend.api.funtranslations.api import translate
@@ -15,4 +15,4 @@ class Pokemon(View):
 
         description = get_species(name)
         translation = translate(description)
-        return HttpResponse(translation)
+        return JsonResponse({"name": name, "description":translation})
