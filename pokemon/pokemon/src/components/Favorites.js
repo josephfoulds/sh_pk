@@ -14,7 +14,7 @@ class Favorites extends Component {
         </h1>
         <ul>
           {(this.props.favorites || []).map(item => (
-            <li key={item}>
+            <li key={item.name}>
               <div>
                 {item.name}<br />
                 {item.description}
