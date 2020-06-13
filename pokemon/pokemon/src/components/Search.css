@@ -1,0 +1,13 @@
+.search {
+	text-align: center;
+}
+
+.search .button {
+	width: 10%;
+	min-width: 100px;
+}
+
+.search .input {
+	width: 30%;
+	margin-bottom:20px;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import './Favorites.css';
 
 class Favorites extends Component {
   render() {
@@ -9,7 +10,7 @@ class Favorites extends Component {
     }
 
     return (
-      <div className="favorites" style={{backgroundColor: "#ffc4cb"}}>
+      <div className="favorites">
         <h1>
           Favorites
         </h1>
@@ -17,8 +18,9 @@ class Favorites extends Component {
           {Object.entries(this.props.favorites).map(entry => (
             <li key={entry[0]}>
               <div>
-                {entry[0]}<br />
-                {entry[1]}
+                <span className="name">{entry[0]}</span>
+                <br />
+                <span className="description">{entry[1]}</span>
               </div>
             </li>
           ))}

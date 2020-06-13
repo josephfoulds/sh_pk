@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import './Search.css';
 
 class Search extends Component {
   constructor(props) {
@@ -37,7 +38,8 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="search" style={{backgroundColor: "#c4ffdf"}}>
+      <div className="search">
+        <div>
           <input
             type="text"
             className="input"
@@ -46,9 +48,12 @@ class Search extends Component {
             value={this.state.query}
             onChange={this.handleChange}
           />
+        </div>
+        <div>
           <button className="button" onClick={this.findPokemonData}>
             Search
           </button>
+        </div>
       </div>
     );
   }

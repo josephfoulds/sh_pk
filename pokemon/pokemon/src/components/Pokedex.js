@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import './Pokedex.css';
 
 class Pokedex extends Component {
   constructor(props) {
@@ -26,19 +27,18 @@ class Pokedex extends Component {
     }
 
     return (
-      <div className="pokedex" style={{backgroundColor: "#c7dcff"}}>
-        <h1>
-          Pokedex
-        </h1>
-        <h2>
+      <div className="pokedex">
+        <h2 id="name">
           {this.props.pokemon["name"]}
         </h2>
         <span>
           {this.props.pokemon["description"]}
         </span>
-        <button className="button" onClick={this.addFavorite}>
-          Add to Favorites
-        </button>
+        <div>
+          <button className="button" onClick={this.addFavorite}>
+            Add to Favorites
+          </button>
+        </div>
       </div>
     );
   }
