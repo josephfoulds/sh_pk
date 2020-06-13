@@ -14,6 +14,7 @@ class Search extends Component {
     // this bindings for functions
     this.handleChange = this.handleChange.bind(this);
     this.findPokemonData = this.findPokemonData.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   // Backend GET call to retrieve pokemon information from backend service
@@ -36,6 +37,13 @@ class Search extends Component {
     this.setState({query: event.target.value});
   }
 
+  // Required to update on enter press
+  handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      this.findPokemonData();
+    }
+  }
+
   render() {
     return (
       <div className="search">
@@ -47,6 +55,7 @@ class Search extends Component {
             placeholder="Search for a Pokemon..."
             value={this.state.query}
             onChange={this.handleChange}
+            onKeyDown={this.handleKeyDown}
           />
         </div>
         <div>
