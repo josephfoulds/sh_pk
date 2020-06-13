@@ -44,6 +44,11 @@ class Search extends Component {
     }
   }
 
+  // Give focus to the search input on render
+  componentDidMount(){
+    this.searchInput.focus(); 
+  }
+
   render() {
     return (
       <div className="search">
@@ -56,6 +61,7 @@ class Search extends Component {
             value={this.state.query}
             onChange={this.handleChange}
             onKeyDown={this.handleKeyDown}
+            ref={(input) => { this.searchInput = input; }} 
           />
         </div>
         <div>
