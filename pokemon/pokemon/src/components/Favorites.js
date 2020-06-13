@@ -4,7 +4,7 @@ import { render } from "react-dom";
 class Favorites extends Component {
   render() {
     // Don't render if we have no favorites
-    if (this.props.favorites.length <= 0) {
+    if (Object.keys(this.props.favorites).length <= 0) {
       return null
     }
 
@@ -14,11 +14,11 @@ class Favorites extends Component {
           Favorites
         </h1>
         <ul>
-          {(this.props.favorites || []).map(item => (
-            <li key={item.name}>
+          {Object.entries(this.props.favorites).map(entry => (
+            <li key={entry[0]}>
               <div>
-                {item.name}<br />
-                {item.description}
+                {entry[0]}<br />
+                {entry[1]}
               </div>
             </li>
           ))}

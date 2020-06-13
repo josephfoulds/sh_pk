@@ -12,7 +12,7 @@ class App extends Component {
 
     // Initialize the state, and pull in the favorites from localStorage
     this.state = {
-      favorites: JSON.parse(localStorage.getItem('favorites') || ("[]")),
+      favorites: JSON.parse(localStorage.getItem('favorites') || ("{}")),
       pokemon: null,
     };
 
@@ -30,13 +30,14 @@ class App extends Component {
 
   // Used to add a pokemon to the favorites list
   addFavorite(pokemon) {
-    // Contactenate the existing favorites with the new favorite added, stringify it, and push it to local storage
-    localStorage.setItem('favorites', JSON.stringify(this.state.favorites.concat([pokemon])));
+    let favorites = this.state.favorites;
+    favorites[pokemon.name] = pokemon.description
 
-    // Avoid race conditions by accessing the previous state through the setState function
-    this.setState(prevState => ({
-      favorites: [...prevState.favorites, pokemon]
-    }))
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+
+    this.setState({
+      favorites: favorites
+    })
   }
 
   // Component driven design
