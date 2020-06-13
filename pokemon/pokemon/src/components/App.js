@@ -19,6 +19,7 @@ class App extends Component {
     // this bindings for functions
     this.updatePokemon = this.updatePokemon.bind(this);
     this.addFavorite = this.addFavorite.bind(this);
+    this.delFavorite = this.delFavorite.bind(this);
   }
 
   // Used to update the current viewed pokemon
@@ -40,13 +41,25 @@ class App extends Component {
     })
   }
 
+  // Used to add a pokemon to the favorites list
+  delFavorite(name) {
+    let favorites = this.state.favorites;
+    delete favorites[name]
+
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+
+    this.setState({
+      favorites: favorites
+    })
+  }
+
   // Component driven design
   render() {
     return (
       <div>
         <Search updatePokemon={this.updatePokemon}/>
         <Pokedex pokemon={this.state.pokemon} addFavorite={this.addFavorite} favorites={this.state.favorites}/>
-        <Favorites favorites={this.state.favorites}/>
+        <Favorites favorites={this.state.favorites} delFavorite={this.delFavorite}/>
       </div>
     );
   }

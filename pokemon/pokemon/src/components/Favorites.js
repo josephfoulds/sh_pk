@@ -22,6 +22,11 @@ class Favorites extends Component {
                 <br />
                 <span className="description">{entry[1]}</span>
               </div>
+              <div>
+                <button className="button" onClick={() => this.props.delFavorite(entry[0])}>
+                  Delete from Favorites
+                </button>
+              </div>
             </li>
           ))}
         </ul>
