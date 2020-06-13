@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 import './Pokedex.css';
 
-class Pokedex extends Component {
+class Favorite extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,6 +21,23 @@ class Pokedex extends Component {
   }
 
   render() {
+    // If the pokemon is already in the favorites, don't give the option to add it to favorites
+    if (this.props.pokemon["name"] in this.props.favorites) {
+      return null
+    }
+
+    return (
+      <div>
+        <button className="button" onClick={this.addFavorite}>
+          Add to Favorites
+        </button>
+      </div>
+    )
+  }
+}
+
+class Pokedex extends Component {
+  render() {
     // Don't render if we are not inspecting a pokemon's information
     if (!this.props.pokemon) {
       return null
@@ -34,11 +51,7 @@ class Pokedex extends Component {
         <span>
           {this.props.pokemon["description"]}
         </span>
-        <div>
-          <button className="button" onClick={this.addFavorite}>
-            Add to Favorites
-          </button>
-        </div>
+        <Favorite addFavorite={this.props.addFavorite} pokemon={this.props.pokemon} favorites={this.props.favorites}/>
       </div>
     );
   }

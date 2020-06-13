@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <div>
         <Search updatePokemon={this.updatePokemon}/>
-        <Pokedex pokemon={this.state.pokemon} addFavorite={this.addFavorite}/>
+        <Pokedex pokemon={this.state.pokemon} addFavorite={this.addFavorite} favorites={this.state.favorites}/>
         <Favorites favorites={this.state.favorites}/>
       </div>
     );
