@@ -9,6 +9,7 @@ class Search extends Component {
     // Initialize the state, query must default to empty string rather than null as it is passed to a value parameter
     this.state = {
       query: "",
+      showError: false,
     };
 
     // this bindings for functions
@@ -19,6 +20,12 @@ class Search extends Component {
 
   // Backend GET call to retrieve pokemon information from backend service
   findPokemonData() {
+    // Do not query the API with no query data
+    if(!this.state.query){
+      return;
+    }
+
+    this.setState({showError: false});
     fetch("/backend/pokemon/"+this.state.query)
       .then(res => res.json())
       .then(
@@ -30,6 +37,9 @@ class Search extends Component {
           })
         },
       )
+      .catch(_ => {
+        this.setState({showError: true});
+      })
   }
 
   // Required to ensure that the query state variable is updated on change of input
@@ -53,6 +63,10 @@ class Search extends Component {
     return (
       <div className="search">
         <div>
+          <h1>Shakespearean Pokemon</h1>
+          <h3>"Did get to catcheth those folk all"</h3>
+        </div>
+        <div>
           <input
             type="text"
             className="input"
@@ -68,6 +82,9 @@ class Search extends Component {
           <button className="button" onClick={this.findPokemonData}>
             Search
           </button>
+        </div>
+        <div id="error" className={(this.state.showError ? 'show' : 'hidden')}>
+          This Pokemon could not be found, please try again
         </div>
       </div>
     );

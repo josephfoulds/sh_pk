@@ -5,6 +5,7 @@ import { render } from "react-dom";
 import Search from "./Search"
 import Pokedex from "./Pokedex"
 import Favorites from "./Favorites"
+import './App.css'
 
 class App extends Component {
   constructor(props) {

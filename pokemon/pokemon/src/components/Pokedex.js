@@ -45,9 +45,9 @@ class Pokedex extends Component {
 
     return (
       <div className="pokedex">
-        <h2 id="name">
+        <h1 id="name">
           {this.props.pokemon["name"]}
-        </h2>
+        </h1>
         <span>
           {this.props.pokemon["description"]}
         </span>

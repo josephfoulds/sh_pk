@@ -2,6 +2,11 @@
 	text-align: center;
 	width: 60%;
 	margin: 0 auto;
+	background: rgba(255, 255, 255, .2);
+	padding-top:20px;
+	padding-bottom:20px;
+	margin-top:20px;
+	border-radius: 25px;
 }
 
 .favorites ul {
@@ -17,4 +22,13 @@
 .favorites .name {
 	font-weight:bold;
 	text-transform:capitalize;
+}
+
+.favorites h1 {
+	margin-top:0px;
+}
+
+.favorites button {
+	margin-top:10px;
+	margin-bottom:10px;
 }
