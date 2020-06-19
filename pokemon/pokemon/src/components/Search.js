@@ -10,6 +10,7 @@ class Search extends Component {
     this.state = {
       query: "",
       showError: false,
+      cache: {},
     };
 
     // this bindings for functions
@@ -25,7 +26,20 @@ class Search extends Component {
       return;
     }
 
+    // Unset any errors which are being shown
     this.setState({showError: false});
+
+    // First query the local cache to determine if we've searched for this before
+    if (this.state.query in this.state.cache) {
+      // If we have searched for this before, populate from local cache and return out
+      let result = this.state.cache[this.state.query];
+      this.props.updatePokemon({
+        name: result["name"],
+        description: result["description"]
+      });
+      return
+    }
+
     fetch("/backend/pokemon/"+this.state.query)
       .then(res => res.json())
       .then(
@@ -34,7 +48,12 @@ class Search extends Component {
           this.props.updatePokemon({
             name: result["name"],
             description: result["description"]
-          })
+          });
+
+          // Update the local cache to avoid quota burn on repeated requests
+          let cache = this.state.cache;
+          cache[this.state.query] = result;
+          this.setState({cache: cache});
         },
       )
       .catch(_ => {
