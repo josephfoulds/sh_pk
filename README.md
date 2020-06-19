@@ -9,7 +9,33 @@ React is compiled via Webpack and served as a static JS package by Django.
 
 ## Installation
 ### Virtual Environment
-@@TODO
+1) Clone Github repository into your local environment
+* `git clone https://github.com/josephfoulds/sh_pk`
+
+2) Move into the repo root
+* `cd sh_pk`
+
+3) Install requirements using pip
+* `pip install -r requirements.txt`
+
+4) Run the server
+* `cd pokemon; python manage.py runserver`
+
+Congratulations! sh_pk is now accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000/)
+
+### Docker Build
+1) Clone Github repository into your local environment
+* `git clone https://github.com/josephfoulds/sh_pk`
+
+2) Move into the repo root
+* `cd sh_pk`
+
+3) Build and run the Docker image
+* `docker build -t truelayer .; docker run -it -p 8000:8000 truelayer`
+
+*nb: Depending on your Docker configuration, you may need to run the above commands as root via sudo*
+
+Congratulations! sh_pk is now accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000/)
 
 ## Internal API
 Backend API is implemented RESTful as per specification and accessible via the routes outlined below
