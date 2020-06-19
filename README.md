@@ -10,7 +10,7 @@ React is compiled via Webpack and served as a static JS package by Django.
 ## Installation
 ### Option 1) Docker Hub
 1) Pull the Docker image and run it
-* `sudo docker pull jfoulds/sh_pk; sudo docker run -it -p 8000:8000 jfoulds/sh_pk`
+* `docker pull jfoulds/sh_pk; docker run -it -p 8000:8000 jfoulds/sh_pk`
 
 Congratulations! sh_pk is now accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000/)
 
