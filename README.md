@@ -8,7 +8,27 @@ Project is implemented using Python-Django backend and React frontend, with the 
 React is compiled via Webpack and served as a static JS package by Django.
 
 ## Installation
-### Virtual Environment
+### Option 1) Docker Hub
+1) Pull the Docker image and run it
+* `sudo docker pull jfoulds/sh_pk; sudo docker run -it -p 8000:8000 jfoulds/sh_pk`
+
+Congratulations! sh_pk is now accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000/)
+
+### Option 2) Docker Build
+1) Clone Github repository into your local environment
+* `git clone https://github.com/josephfoulds/sh_pk`
+
+2) Move into the repo root
+* `cd sh_pk`
+
+3) Build and run the Docker image
+* `docker build -t sh_pk .; docker run -it -p 8000:8000 sh_pk`
+
+*nb: Depending on your Docker configuration, you may need to run the above commands as root via sudo*
+
+Congratulations! sh_pk is now accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000/)
+
+### Option 3) Virtual Environment
 1) Clone Github repository into your local environment
 * `git clone https://github.com/josephfoulds/sh_pk`
 
@@ -23,19 +43,12 @@ React is compiled via Webpack and served as a static JS package by Django.
 
 Congratulations! sh_pk is now accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000/)
 
-### Docker Build
-1) Clone Github repository into your local environment
-* `git clone https://github.com/josephfoulds/sh_pk`
-
-2) Move into the repo root
-* `cd sh_pk`
+## FunTranslations API Key
+Optionally, to avoid the throttling limits, we can provide a FunTranslations API key using the FT_API environment variable.
+For example, this can be passed to the Docker container using the following alternative run command:
 
 3) Build and run the Docker image
-* `docker build -t truelayer .; docker run -it -p 8000:8000 truelayer`
-
-*nb: Depending on your Docker configuration, you may need to run the above commands as root via sudo*
-
-Congratulations! sh_pk is now accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000/)
+* `docker build -t sh_pk .; docker run -it -e FT_API=[apikey] -p 8000:8000 sh_pk`
 
 ## Internal API
 Backend API is implemented RESTful as per specification and accessible via the routes outlined below
