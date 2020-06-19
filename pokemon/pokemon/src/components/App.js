@@ -33,25 +33,25 @@ class App extends Component {
   // Used to add a pokemon to the favorites list
   addFavorite(pokemon) {
     let favorites = this.state.favorites;
-    favorites[pokemon.name] = pokemon.description
+    favorites[pokemon.name] = pokemon.description;
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
 
     this.setState({
       favorites: favorites
-    })
+    });
   }
 
   // Used to add a pokemon to the favorites list
   delFavorite(name) {
     let favorites = this.state.favorites;
-    delete favorites[name]
+    delete favorites[name];
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
 
     this.setState({
       favorites: favorites
-    })
+    });
   }
 
   // Component driven design

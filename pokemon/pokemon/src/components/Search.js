@@ -37,7 +37,7 @@ class Search extends Component {
         name: result["name"],
         description: result["description"]
       });
-      return
+      return;
     }
 
     fetch("/backend/pokemon/"+this.state.query)
@@ -58,7 +58,7 @@ class Search extends Component {
       )
       .catch(_ => {
         this.setState({showError: true});
-      })
+      });
   }
 
   // Required to ensure that the query state variable is updated on change of input

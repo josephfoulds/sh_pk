@@ -17,13 +17,13 @@ class Favorite extends React.Component {
     this.props.addFavorite({
       name: this.props.pokemon["name"],
       description: this.props.pokemon["description"],
-    })
+    });
   }
 
   render() {
     // If the pokemon is already in the favorites, don't give the option to add it to favorites
     if (this.props.pokemon["name"] in this.props.favorites) {
-      return null
+      return null;
     }
 
     return (
@@ -32,7 +32,7 @@ class Favorite extends React.Component {
           Add to Favorites
         </button>
       </div>
-    )
+    );
   }
 }
 
@@ -40,7 +40,7 @@ class Pokedex extends Component {
   render() {
     // Don't render if we are not inspecting a pokemon's information
     if (!this.props.pokemon) {
-      return null
+      return null;
     }
 
     return (

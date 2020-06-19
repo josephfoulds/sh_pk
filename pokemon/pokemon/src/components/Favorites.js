@@ -6,7 +6,7 @@ class Favorites extends Component {
   render() {
     // Don't render if we have no favorites
     if (Object.keys(this.props.favorites).length <= 0) {
-      return null
+      return null;
     }
 
     return (
