@@ -23,6 +23,9 @@ class Pokemon(View):
         if not name:
             return HttpResponse(status=400)
 
+        # Lower case the name
+        name=name.lower()
+
         # nb: Django will throw a DoesNotExist exception on cache miss
         try:
             # Retrieve from local cache

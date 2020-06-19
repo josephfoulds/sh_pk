@@ -26,13 +26,15 @@ class Search extends Component {
       return;
     }
 
+    let query = this.state.query.toLowerCase()
+
     // Unset any errors which are being shown
     this.setState({showError: false});
 
     // First query the local cache to determine if we've searched for this before
-    if (this.state.query in this.state.cache) {
+    if (query in this.state.cache) {
       // If we have searched for this before, populate from local cache and return out
-      let result = this.state.cache[this.state.query];
+      let result = this.state.cache[query];
       this.props.updatePokemon({
         name: result["name"],
         description: result["description"]
@@ -40,7 +42,7 @@ class Search extends Component {
       return;
     }
 
-    fetch("/backend/pokemon/"+this.state.query)
+    fetch("/backend/pokemon/"+query)
       .then(res => res.json())
       .then(
         (result) => {
@@ -52,7 +54,7 @@ class Search extends Component {
 
           // Update the local cache to avoid quota burn on repeated requests
           let cache = this.state.cache;
-          cache[this.state.query] = result;
+          cache[query] = result;
           this.setState({cache: cache});
         },
       )
